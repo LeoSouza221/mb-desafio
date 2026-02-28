@@ -52,8 +52,8 @@
 
 	input {
 		position: relative;
-		padding: var(--spacing);
-		font-size: 1rem;
+		padding: var(--spacing-2);
+		font-size: var(--spacing-4);
 		color: var(--text-color);
 		border: none;
 		background: transparent;
@@ -63,6 +63,6 @@
 
 	.input-error {
 		color: var(--error);
-		font-size: 0.75rem;
+		font-size: var(--spacing-3);
 	}
 </style>
