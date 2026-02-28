@@ -9,8 +9,6 @@
 </template>
 
 <script setup>
-	import AppButton from './components/AppButton.vue'
-	import AppInput from './components/inputs/AppInput.vue'
 	import AppFooter from './components/layout/AppFooter.vue'
 	import AppHeader from './components/layout/AppHeader.vue'
 	import UserForm from './pages/UserForm.vue'
