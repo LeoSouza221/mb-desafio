@@ -2,8 +2,7 @@
 	<AppHeader />
 
 	<main>
-		<AppButton variant="primary" :loading="false">Teste button</AppButton>
-		<AppInput label="Teste input" errorMessage="Error message" />
+		<UserForm />
 	</main>
 
 	<AppFooter />
@@ -14,6 +13,7 @@
 	import AppInput from './components/inputs/AppInput.vue'
 	import AppFooter from './components/layout/AppFooter.vue'
 	import AppHeader from './components/layout/AppHeader.vue'
+	import UserForm from './pages/UserForm.vue'
 </script>
 
 <style scoped>
