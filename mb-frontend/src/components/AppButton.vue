@@ -31,16 +31,18 @@
 <style scoped>
 	.btn {
 		--btn-color: black;
-		padding: var(--spacing);
+		height: 40px;
+		padding: var(--spacing-2) var(--spacing-5);
 		border-radius: var(--radius);
 		border: none;
 		cursor: pointer;
 		color: white;
-		font-size: 1rem;
+		font-size: var(--spacing-4);
 		font-weight: 500;
 		display: inline-flex;
 		place-items: center;
-		gap: 0.5rem;
+		text-align: center;
+		gap: var(--spacing-2);
 	}
 
 	.btn:disabled {

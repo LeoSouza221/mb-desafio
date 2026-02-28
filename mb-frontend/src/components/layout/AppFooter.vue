@@ -32,31 +32,32 @@
 		width: 100%;
 		height: 30px;
 		background: var(--primary);
-		padding: 0;
+		padding: 0 var(--spacing-4);
 		box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 		display: flex;
-		place-items: center;
+		align-items: center;
 		justify-content: space-between;
-		gap: var(--spacing);
+		gap: var(--spacing-2);
 	}
 
 	p {
 		color: white;
-		font-size: 0.75rem;
+		font-size: var(--spacing-3);
 		font-weight: 500;
 	}
 
 	a {
 		color: white;
-		font-size: 0.75rem;
+		font-size: var(--spacing-3);
 		font-weight: 500;
 		text-decoration: none;
+		height: 100%;
+		display: flex;
+		place-items: center;
 	}
 
 	.footer-socials {
 		display: flex;
-		place-items: center;
-		gap: var(--spacing);
-		height: 100%;
+		gap: var(--spacing-2);
 	}
 </style>
