@@ -4,9 +4,9 @@
 	--primary: #ff9900;
 	--secondary: #35495e;
 	--error: #e63946;
-
+	--text-color: #333333;
 	--radius: 4px;
-	--spacing: 8px;
+	--spacing: 0.5rem;
 }
 
 * {
@@ -16,9 +16,10 @@
 body {
 	margin: 0;
 	font-family: sans-serif;
+	background-color: white;
 }
 
-#main {
+main {
 	max-width: 1280px;
 	margin: 0 auto;
 	padding: 2rem;
