@@ -1,7 +1,7 @@
 <template>
 	<button :class="['btn', variant, { outline }]" :disabled="disabled || loading">
 		<Loading v-if="loading" class="spinner" />
-		<slot />
+		<span><slot /></span>
 	</button>
 </template>
 
@@ -32,6 +32,7 @@
 	.btn {
 		--btn-color: black;
 		height: 40px;
+		width: 100%;
 		padding: var(--spacing-2) var(--spacing-5);
 		border-radius: var(--radius);
 		border: none;
@@ -41,7 +42,7 @@
 		font-weight: 500;
 		display: inline-flex;
 		place-items: center;
-		text-align: center;
+		justify-content: center;
 		gap: var(--spacing-2);
 	}
 
