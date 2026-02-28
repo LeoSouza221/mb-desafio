@@ -1,37 +1,39 @@
 @import './base.css';
 
 :root {
-  --primary: #42b883;
-  --secondary: #35495e;
-  --error: #e63946;
+	--primary: #ff9900;
+	--secondary: #35495e;
+	--error: #e63946;
+
+	--radius: 4px;
+	--spacing: 8px;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: sans-serif;
+	margin: 0;
+	font-family: sans-serif;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+#main {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 2rem;
+	font-weight: normal;
 }
-
 
 @media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+	body {
+		display: flex;
+		place-items: center;
+	}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+	#main {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		padding: 0 2rem;
+	}
 }
