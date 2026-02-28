@@ -13,7 +13,7 @@
 
 <script setup>
 	import AppButton from './components/AppButton.vue'
-	import AppInput from './components/Icon/inputs/AppInput.vue'
+	import AppInput from './components/inputs/AppInput.vue'
 </script>
 
 <style scoped>
