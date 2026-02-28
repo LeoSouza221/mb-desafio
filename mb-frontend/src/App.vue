@@ -1,9 +1,5 @@
 <template>
-	<header>
-		<img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-		<div class="wrapper"></div>
-	</header>
+	<AppHeader />
 
 	<main>
 		<AppButton variant="primary" :loading="false">Teste button</AppButton>
@@ -14,6 +10,7 @@
 <script setup>
 	import AppButton from './components/AppButton.vue'
 	import AppInput from './components/inputs/AppInput.vue'
+	import AppHeader from './components/layout/AppHeader.vue'
 </script>
 
 <style scoped>
