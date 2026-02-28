@@ -7,13 +7,11 @@
 
 	<main>
 		<AppButton variant="primary" :loading="false">Teste button</AppButton>
-		<AppInput label="Teste input" errorMessage="Error message" />
 	</main>
 </template>
 
 <script setup>
 	import AppButton from './components/AppButton.vue'
-	import AppInput from './components/Icon/inputs/AppInput.vue'
 </script>
 
 <style scoped>
