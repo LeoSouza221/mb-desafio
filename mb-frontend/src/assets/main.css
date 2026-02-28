@@ -4,6 +4,7 @@
 	--primary: #ff9900;
 	--secondary: #35495e;
 	--error: #e63946;
+	--text-color: #333;
 
 	--radius: 4px;
 	--spacing: 8px;
@@ -16,13 +17,22 @@
 body {
 	margin: 0;
 	font-family: sans-serif;
+	background-color: white;
+	color: var(--text-color);
+	min-height: auto;
 }
 
-#main {
+main {
 	max-width: 1280px;
 	margin: 0 auto;
 	padding: 2rem;
 	font-weight: normal;
+	margin-top: 40px;
+	margin-bottom: 20px;
+}
+
+#app {
+	width: 100vw;
 }
 
 @media (min-width: 1024px) {
@@ -31,9 +41,10 @@ body {
 		place-items: center;
 	}
 
-	#main {
+	main {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		padding: 0 2rem;
+		margin-top: 80px;
 	}
 }

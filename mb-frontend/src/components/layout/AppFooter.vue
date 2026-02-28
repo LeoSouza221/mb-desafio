@@ -1,0 +1,62 @@
+<template>
+	<footer>
+		<p>© {{ year }} MB Desafio</p>
+		<div class="footer-socials">
+			<a href="https://github.com/LeoSouza221" target="_blank" rel="noopener noreferrer">
+				<Github width="20" height="20" />
+			</a>
+			<a
+				href="https://www.linkedin.com/in/leonardo-de-souza-a75557156/"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<Linkedin width="20" height="20" />
+			</a>
+		</div>
+	</footer>
+</template>
+
+<script setup>
+	import { computed } from 'vue'
+	import Github from '../Icon/Github.vue'
+	import Linkedin from '../Icon/Linkedin.vue'
+
+	const year = computed(() => new Date().getFullYear())
+</script>
+
+<style scoped>
+	footer {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 30px;
+		background: var(--primary);
+		padding: 0;
+		box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+		display: flex;
+		place-items: center;
+		justify-content: space-between;
+		gap: var(--spacing);
+	}
+
+	p {
+		color: white;
+		font-size: 0.75rem;
+		font-weight: 500;
+	}
+
+	a {
+		color: white;
+		font-size: 0.75rem;
+		font-weight: 500;
+		text-decoration: none;
+	}
+
+	.footer-socials {
+		display: flex;
+		place-items: center;
+		gap: var(--spacing);
+		height: 100%;
+	}
+</style>
