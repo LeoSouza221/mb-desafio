@@ -3,7 +3,7 @@
 		<section class="">
 			<AppTransition>
 				<UserFormStepOne v-if="step === 1" key="stepOne" v-model="userForm" step="1" />
-				<UserFormStepOne v-else-if="step === 2" key="stepTwo" v-model="userForm" step="2" />
+				<UserFormStepTwo v-else-if="step === 2" key="stepTwo" v-model="userForm" step="2" />
 				<UserFormStepOne v-else-if="step === 3" key="stepThree" v-model="userForm" step="3" />
 				<UserFormStepOne v-else-if="step === 4" key="stepFour" v-model="userForm" step="4" />
 			</AppTransition>
@@ -35,12 +35,17 @@
 	import { ref } from 'vue'
 	import AppButton from '../components/AppButton.vue'
 	import UserFormStepOne from '../components/user-form/UserFormStepOne.vue'
+	import UserFormStepTwo from '../components/user-form/UserFormStepTwo.vue'
 	import AppTransition from '../components/AppTransition.vue'
 
 	const step = ref(1)
 	const userForm = ref({
 		email: '',
-		type: ''
+		type: '',
+		name: '',
+		document: '',
+		birthday: '',
+		phoneNumber: ''
 	})
 
 	const onStepBack = () => {
