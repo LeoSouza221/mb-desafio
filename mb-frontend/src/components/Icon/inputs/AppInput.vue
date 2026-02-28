@@ -35,7 +35,7 @@
 
 <style scoped>
 	.input-wrapper {
-		position: relative;
+		width: 100%;
 	}
 
 	.input-container {
@@ -51,14 +51,14 @@
 	}
 
 	input {
+		position: relative;
 		padding: var(--spacing);
 		font-size: 1rem;
-		width: 100%;
 		color: var(--text-color);
 		border: none;
 		background: transparent;
-		border: none;
 		outline: none;
+		width: 100%;
 	}
 
 	.input-error {
