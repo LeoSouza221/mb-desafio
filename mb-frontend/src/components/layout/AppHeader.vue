@@ -16,7 +16,7 @@
 		width: 100%;
 		height: 60px;
 		background: var(--primary);
-		padding: var(--spacing-2);
+		padding: var(--spacing-2) var(--spacing-4);
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		display: flex;
 		place-items: center;
