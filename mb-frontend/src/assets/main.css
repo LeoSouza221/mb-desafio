@@ -19,6 +19,7 @@ body {
 	font-family: sans-serif;
 	background-color: white;
 	color: var(--text-color);
+	min-height: auto;
 }
 
 main {
@@ -27,6 +28,7 @@ main {
 	padding: 2rem;
 	font-weight: normal;
 	margin-top: 40px;
+	margin-bottom: 20px;
 }
 
 #app {

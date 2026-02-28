@@ -5,11 +5,14 @@
 		<AppButton variant="primary" :loading="false">Teste button</AppButton>
 		<AppInput label="Teste input" errorMessage="Error message" />
 	</main>
+
+	<AppFooter />
 </template>
 
 <script setup>
 	import AppButton from './components/AppButton.vue'
 	import AppInput from './components/inputs/AppInput.vue'
+	import AppFooter from './components/layout/AppFooter.vue'
 	import AppHeader from './components/layout/AppHeader.vue'
 </script>
 
