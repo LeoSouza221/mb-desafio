@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="form-step-one">
 		<h2>Seja bem-vindo(a) {{ step }}</h2>
 		<div class="form-container">
 			<AppInput
@@ -45,6 +45,10 @@
 </script>
 
 <style scoped>
+	.form-step-one {
+		width: 100%;
+	}
+
 	.form-container {
 		width: 100%;
 		display: flex;

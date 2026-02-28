@@ -1,18 +1,12 @@
 <template>
 	<form action="">
 		<section class="">
-			<Transition name="fade">
-				<UserFormStepOne v-if="step === 1" v-model="userForm" step="1" />
-			</Transition>
-			<Transition name="fade">
-				<UserFormStepOne v-if="step === 2" v-model="userForm" step="2" />
-			</Transition>
-			<Transition name="fade">
-				<UserFormStepOne v-if="step === 3" v-model="userForm" step="3" />
-			</Transition>
-			<Transition name="fade">
-				<UserFormStepOne v-if="step === 4" v-model="userForm" step="4" />
-			</Transition>
+			<AppTransition>
+				<UserFormStepOne v-if="step === 1" key="stepOne" v-model="userForm" step="1" />
+				<UserFormStepOne v-else-if="step === 2" key="stepTwo" v-model="userForm" step="2" />
+				<UserFormStepOne v-else-if="step === 3" key="stepThree" v-model="userForm" step="3" />
+				<UserFormStepOne v-else-if="step === 4" key="stepFour" v-model="userForm" step="4" />
+			</AppTransition>
 			<div class="form-action-buttons">
 				<AppButton
 					v-if="step !== 1"
@@ -41,6 +35,7 @@
 	import { ref } from 'vue'
 	import AppButton from '../components/AppButton.vue'
 	import UserFormStepOne from '../components/user-form/UserFormStepOne.vue'
+	import AppTransition from '../components/AppTransition.vue'
 
 	const step = ref(1)
 	const userForm = ref({
@@ -92,19 +87,5 @@
 		gap: var(--spacing-2);
 		margin-top: var(--spacing-4);
 		justify-content: center;
-	}
-
-	.fade-enter-active,
-	.fade-leave-active {
-		transition:
-			opacity 0.5s ease 0.1s,
-			transform 0.5s ease 0.1s;
-		transform: translateX(-300px);
-	}
-
-	.fade-enter-from,
-	.fade-leave-to {
-		opacity: 0;
-		transform: translateX(300px);
 	}
 </style>
