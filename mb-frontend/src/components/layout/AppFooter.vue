@@ -30,7 +30,7 @@
 		bottom: 0;
 		left: 0;
 		width: 100%;
-		height: 30px;
+		height: 32px;
 		background: var(--primary);
 		padding: 0 var(--spacing-4);
 		box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
