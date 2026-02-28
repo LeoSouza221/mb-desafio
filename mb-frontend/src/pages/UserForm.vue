@@ -41,7 +41,11 @@
 	const step = ref(1)
 	const userForm = ref({
 		email: '',
-		type: ''
+		type: '',
+		name: '',
+		document: '',
+		birthday: '',
+		phoneNumber: ''
 	})
 
 	const onStepBack = () => {
