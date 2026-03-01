@@ -1,7 +1,7 @@
 <template>
 	<div class="form-step-wrapper">
 		<div>
-			<h2>Senha de acesso</h2>
+			<h3>Senha de acesso</h3>
 			<div class="form-container">
 				<AppInput
 					v-model="modelValue.password"

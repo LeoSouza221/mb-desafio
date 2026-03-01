@@ -21,6 +21,7 @@
 		display: flex;
 		place-items: center;
 		gap: var(--spacing);
+		z-index: 1000;
 	}
 
 	h1 {

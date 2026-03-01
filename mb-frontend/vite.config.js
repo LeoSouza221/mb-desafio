@@ -9,10 +9,18 @@ export default defineConfig({
 	plugins: [vue(), vueDevTools()],
 	resolve: {
 		alias: {
-			'@': fileURLToPath(new URL('./src', import.meta.url))
+			'@': fileURLToPath(new URL('./src', import.meta.url)),
+			'~': fileURLToPath(new URL('./src/components', import.meta.url))
 		}
 	},
 	server: {
 		host: '127.0.0.1'
+	},
+	proxy: {
+		'/api': {
+			target: process.env.API_URL,
+			changeOrigin: true,
+			rewrite: (path) => path.replace(/^\/api/, '')
+		}
 	}
 })

@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-	import Loading from './Icon/Loading.vue'
+	import Loading from '~/icons/Loading.vue'
 
 	defineProps({
 		variant: {
