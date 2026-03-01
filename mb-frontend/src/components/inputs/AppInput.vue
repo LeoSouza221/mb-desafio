@@ -3,7 +3,14 @@
 		<div class="input-wrapper">
 			<label>{{ label }}</label>
 			<div class="input-container">
-				<input v-model="modelValue" class="input" :type="inputType" />
+				<input
+					v-model="modelValue"
+					class="input"
+					:type="inputType"
+					v-bind="$attrs"
+					@blur="emit('blur', $event)"
+					@focus="emit('focus', $event)"
+				/>
 				<button
 					v-if="type === 'password'"
 					type="button"
@@ -31,6 +38,7 @@
 		default: ''
 	})
 
+	const emit = defineEmits(['blur', 'focus'])
 	const props = defineProps({
 		label: {
 			type: String,
@@ -61,17 +69,6 @@
 </script>
 
 <style scoped>
-	.input-wrapper {
-		width: 100%;
-	}
-
-	.input-container {
-		position: relative;
-		border: 2px solid var(--text-color);
-		border-radius: var(--radius);
-		background: white;
-	}
-
 	label {
 		display: block;
 		font-weight: 600;
@@ -87,6 +84,26 @@
 		background: transparent;
 		outline: none;
 		width: 100%;
+	}
+
+	.input-wrapper {
+		width: 100%;
+	}
+
+	.input-container {
+		position: relative;
+		border: 2px solid var(--text-color);
+		border-radius: var(--radius);
+		background: white;
+	}
+
+	.input-container:has(input:disabled) {
+		opacity: 0.6;
+	}
+
+	input:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
 	}
 
 	.input-error {
