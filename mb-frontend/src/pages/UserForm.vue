@@ -9,7 +9,7 @@
 				<UserFormStepOne v-if="step === 1" key="stepOne" v-model="userForm" />
 				<UserFormStepTwo v-else-if="step === 2" key="stepTwo" v-model="userForm" />
 				<UserFormStepThree v-else-if="step === 3" key="stepThree" v-model="userForm" />
-				<UserFormStepOne v-else-if="step === 4" key="stepFour" v-model="userForm" />
+				<UserFormStepFour v-else-if="step === 4" key="stepFour" v-model="userForm" />
 			</AppTransition>
 			<div class="form-action-buttons">
 				<AppButton
@@ -41,6 +41,7 @@
 	import UserFormStepOne from '../components/user-form/UserFormStepOne.vue'
 	import UserFormStepTwo from '../components/user-form/UserFormStepTwo.vue'
 	import UserFormStepThree from '../components/user-form/UserFormStepThree.vue'
+	import UserFormStepFour from '../components/user-form/UserFormStepFour.vue'
 	import AppTransition from '../components/AppTransition.vue'
 
 	const step = ref(1)
