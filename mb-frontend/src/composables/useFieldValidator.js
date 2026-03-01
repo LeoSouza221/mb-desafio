@@ -1,31 +1,9 @@
-import { ref, computed, watchEffect, toValue } from 'vue'
+import { ref, computed, toValue } from 'vue'
 
 export function useFieldValidator(fieldRef, field, rules) {
 	const touched = ref(false)
 	const errorMessage = ref('')
-	// const hasError = ref(true)
 	const value = toValue(fieldRef)
-
-	// function validate(value) {
-	// 	if (!touched.value) {
-	// 		errorMessage.value = ''
-	// 		hasError.value = true
-	// 		return
-	// 	}
-
-	// 	for (const rule of rules) {
-	// 		const result = rule(value)
-
-	// 		if (result) {
-	// 			errorMessage.value = result
-	// 			hasError.value = true
-	// 			return
-	// 		}
-	// 	}
-
-	// 	errorMessage.value = ''
-	// 	hasError.value = false
-	// }
 
 	const hasError = computed(() => {
 		if (!touched.value && !value[field]) {
@@ -45,10 +23,6 @@ export function useFieldValidator(fieldRef, field, rules) {
 		errorMessage.value = ''
 		return false
 	})
-
-	// watchEffect(() => {
-	// 	validate(value[field])
-	// })
 
 	return {
 		touched,
