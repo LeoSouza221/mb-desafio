@@ -128,19 +128,3 @@
 		)
 	})
 </script>
-
-<style scoped>
-	.form-step-wrapper {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing-4);
-	}
-
-	.form-container {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing-4);
-	}
-</style>

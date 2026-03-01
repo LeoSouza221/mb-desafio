@@ -1,20 +1,26 @@
 <template>
-	<div class="form-step-one">
-		<h2>Senha de acesso</h2>
-		<div class="form-container">
-			<AppInput
-				v-model="modelValue.password"
-				label="Senha"
-				errorMessage="Senha é obrigatória"
-				type="password"
-				required
-			/>
+	<div class="form-step-wrapper">
+		<div>
+			<h2>Senha de acesso</h2>
+			<div class="form-container">
+				<AppInput
+					v-model="modelValue.password"
+					label="Senha"
+					:errorMessage="passwordErrorMessage"
+					type="password"
+					required
+					@blur="passwordTouched = true"
+				/>
+			</div>
 		</div>
+		<UserFormButtonActions :disabled="passwordHasError" />
 	</div>
 </template>
 
 <script setup>
+	import { useFieldValidator } from '@/composables/useFieldValidator'
 	import AppInput from '../inputs/AppInput.vue'
+	import UserFormButtonActions from './UserFormButtonActions.vue'
 
 	const modelValue = defineModel({
 		type: Object,
@@ -28,22 +34,13 @@
 			password: ''
 		})
 	})
+
+	const {
+		touched: passwordTouched,
+		errorMessage: passwordErrorMessage,
+		hasError: passwordHasError
+	} = useFieldValidator(modelValue, 'password', [
+		(v) => !v && 'Senha obrigatória',
+		(v) => v && v.length < 6 && 'Senha deve conter pelo menos 6 caracteres'
+	])
 </script>
-
-<style scoped>
-	.form-step-one {
-		width: 100%;
-	}
-
-	.form-container {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing-4);
-	}
-
-	.form-radio-group {
-		display: flex;
-		gap: var(--spacing-4);
-	}
-</style>

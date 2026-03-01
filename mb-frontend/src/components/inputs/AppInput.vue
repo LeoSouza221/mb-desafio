@@ -69,17 +69,6 @@
 </script>
 
 <style scoped>
-	.input-wrapper {
-		width: 100%;
-	}
-
-	.input-container {
-		position: relative;
-		border: 2px solid var(--text-color);
-		border-radius: var(--radius);
-		background: white;
-	}
-
 	label {
 		display: block;
 		font-weight: 600;
@@ -95,6 +84,26 @@
 		background: transparent;
 		outline: none;
 		width: 100%;
+	}
+
+	.input-wrapper {
+		width: 100%;
+	}
+
+	.input-container {
+		position: relative;
+		border: 2px solid var(--text-color);
+		border-radius: var(--radius);
+		background: white;
+	}
+
+	.input-container:has(input:disabled) {
+		opacity: 0.6;
+	}
+
+	input:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
 	}
 
 	.input-error {

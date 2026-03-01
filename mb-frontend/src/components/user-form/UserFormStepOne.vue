@@ -1,5 +1,5 @@
 <template>
-	<div class="form-step-one">
+	<div class="form-step-wrapper">
 		<div>
 			<h2>Seja bem-vindo(a)</h2>
 			<div class="form-container">
@@ -56,24 +56,3 @@
 		(v) => !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) && 'Email inválido'
 	])
 </script>
-
-<style scoped>
-	.form-step-one {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing-4);
-	}
-
-	.form-container {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing-4);
-	}
-
-	.form-radio-group {
-		display: flex;
-		gap: var(--spacing-4);
-	}
-</style>

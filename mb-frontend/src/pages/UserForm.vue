@@ -73,6 +73,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--spacing-4);
+		overflow: hidden;
 	}
 
 	.form-text-step {
