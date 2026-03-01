@@ -3,7 +3,14 @@
 		<div class="input-wrapper">
 			<label>{{ label }}</label>
 			<div class="input-container">
-				<input v-model="modelValue" class="input" :type="inputType" />
+				<input
+					v-model="modelValue"
+					class="input"
+					:type="inputType"
+					v-bind="$attrs"
+					@blur="emit('blur', $event)"
+					@focus="emit('focus', $event)"
+				/>
 				<button
 					v-if="type === 'password'"
 					type="button"
@@ -31,6 +38,7 @@
 		default: ''
 	})
 
+	const emit = defineEmits(['blur', 'focus'])
 	const props = defineProps({
 		label: {
 			type: String,
