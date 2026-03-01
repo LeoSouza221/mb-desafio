@@ -1,11 +1,15 @@
 <template>
 	<form action="">
-		<section class="">
+		<section class="form-section">
+			<h4>
+				Etapa <span class="form-text-step">{{ step }}</span> de
+				<span class="form-text-step">4</span>
+			</h4>
 			<AppTransition>
-				<UserFormStepOne v-if="step === 1" key="stepOne" v-model="userForm" step="1" />
-				<UserFormStepTwo v-else-if="step === 2" key="stepTwo" v-model="userForm" step="2" />
-				<UserFormStepOne v-else-if="step === 3" key="stepThree" v-model="userForm" step="3" />
-				<UserFormStepOne v-else-if="step === 4" key="stepFour" v-model="userForm" step="4" />
+				<UserFormStepOne v-if="step === 1" key="stepOne" v-model="userForm" />
+				<UserFormStepTwo v-else-if="step === 2" key="stepTwo" v-model="userForm" />
+				<UserFormStepThree v-else-if="step === 3" key="stepThree" v-model="userForm" />
+				<UserFormStepOne v-else-if="step === 4" key="stepFour" v-model="userForm" />
 			</AppTransition>
 			<div class="form-action-buttons">
 				<AppButton
@@ -36,12 +40,13 @@
 	import AppButton from '../components/AppButton.vue'
 	import UserFormStepOne from '../components/user-form/UserFormStepOne.vue'
 	import UserFormStepTwo from '../components/user-form/UserFormStepTwo.vue'
+	import UserFormStepThree from '../components/user-form/UserFormStepThree.vue'
 	import AppTransition from '../components/AppTransition.vue'
 
 	const step = ref(1)
 	const userForm = ref({
 		email: '',
-		type: '',
+		type: 'pf',
 		name: '',
 		document: '',
 		birthday: '',
@@ -86,11 +91,22 @@
 		margin-bottom: var(--spacing-2);
 	}
 
+	.form-section {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-4);
+	}
+
+	.form-text-step {
+		font-size: var(--spacing-4);
+		color: var(--primary);
+	}
+
 	.form-action-buttons {
 		width: 100%;
 		display: flex;
 		gap: var(--spacing-2);
-		margin-top: var(--spacing-4);
 		justify-content: center;
 	}
 </style>

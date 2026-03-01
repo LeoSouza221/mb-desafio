@@ -1,6 +1,6 @@
 <template>
 	<div class="form-step-one">
-		<h2>Seja bem-vindo(a) {{ step }}</h2>
+		<h2>Pessoa {{ userTypeText }}</h2>
 		<div class="form-container">
 			<AppInput v-model="modelValue.name" label="Nome" errorMessage="Nome é obrigatório" />
 			<AppInput
@@ -30,6 +30,7 @@
 </template>
 
 <script setup>
+	import { computed } from 'vue'
 	import AppInput from '../inputs/AppInput.vue'
 
 	const modelValue = defineModel({
@@ -43,11 +44,9 @@
 			phoneNumber: ''
 		})
 	})
-	const props = defineProps({
-		step: {
-			type: [String, Number],
-			default: ''
-		}
+
+	const userTypeText = computed(() => {
+		return modelValue.value.type === 'pf' ? 'Física' : 'Jurídica'
 	})
 </script>
 
