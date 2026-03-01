@@ -28,13 +28,10 @@ export function useFieldValidator(fieldRef, field, rules) {
 	// }
 
 	const hasError = computed(() => {
-		console.log('antes:')
 		if (!touched.value && !value[field]) {
 			errorMessage.value = ''
 			return true
 		}
-
-		console.log('depois:')
 
 		for (const rule of rules) {
 			const result = rule(value[field])

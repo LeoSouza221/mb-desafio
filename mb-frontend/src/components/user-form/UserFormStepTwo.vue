@@ -9,14 +9,14 @@
 					:errorMessage="nameErrorMessage"
 					@blur="nameTouched = true"
 				/>
-				<AppInput
+				<AppInputDocument
 					v-if="modelValue.type === 'pf'"
 					v-model="modelValue.document"
 					label="CPF"
 					:errorMessage="documentErrorMessage"
 					@blur="documentTouched = true"
 				/>
-				<AppInput
+				<AppInputDocument
 					v-else
 					v-model="modelValue.document"
 					label="CNPJ"
@@ -30,7 +30,7 @@
 					:errorMessage="birthdayErrorMessage"
 					@blur="birthdayTouched = true"
 				/>
-				<AppInput
+				<AppInputPhone
 					v-model="modelValue.phoneNumber"
 					label="Telefone"
 					:errorMessage="phoneNumberErrorMessage"
@@ -44,9 +44,11 @@
 
 <script setup>
 	import { computed } from 'vue'
-	import AppInput from '../inputs/AppInput.vue'
-	import UserFormButtonActions from './UserFormButtonActions.vue'
 	import { useFieldValidator } from '../../composables/useFieldValidator'
+	import AppInput from '../inputs/AppInput.vue'
+	import AppInputPhone from '../inputs/AppInputPhone.vue'
+	import UserFormButtonActions from './UserFormButtonActions.vue'
+	import AppInputDocument from '../inputs/AppInputDocument.vue'
 
 	const modelValue = defineModel({
 		type: Object,
@@ -79,7 +81,7 @@
 		hasError: documentHasError
 	} = useFieldValidator(modelValue, 'document', [
 		(v) => !v && 'Documento obrigatório',
-		(v) => v && v.length < 11 && 'Documento deve conter pelo menos 11 caracteres'
+		(v) => v && !documentLengthValidation.value(v) && documentLengthErrorMessage.value
 	])
 
 	const {
@@ -100,6 +102,22 @@
 		(v) => !v && 'Telefone obrigatório',
 		(v) => v && v.length < 10 && 'Telefone deve conter pelo menos 10 caracteres'
 	])
+
+	const documentLengthValidation = computed(() => {
+		if (modelValue.value.type === 'pf') {
+			return (v) => v && v.length === 11
+		} else {
+			return (v) => v && v.length === 14
+		}
+	})
+
+	const documentLengthErrorMessage = computed(() => {
+		if (modelValue.value.type === 'pf') {
+			return 'CPF deve conter exatamente 11 caracteres'
+		} else {
+			return 'CNPJ deve conter exatamente 14 caracteres'
+		}
+	})
 
 	const formHasError = computed(() => {
 		return (
