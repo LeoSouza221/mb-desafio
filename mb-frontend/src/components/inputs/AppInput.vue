@@ -15,8 +15,8 @@
 				</button>
 			</div>
 		</div>
-		<div v-if="errorMessage" class="input-error">
-			<span>{{ errorMessage }}</span>
+		<div class="input-error">
+			<span v-if="errorMessage">{{ errorMessage }}</span>
 		</div>
 	</div>
 </template>
@@ -90,6 +90,7 @@
 	}
 
 	.input-error {
+		min-height: 14px;
 		color: var(--error);
 		font-size: var(--spacing-3);
 	}
