@@ -1,7 +1,7 @@
 <template>
 	<div class="form-step-wrapper">
 		<div>
-			<h2>Pessoa {{ userTypeText }}</h2>
+			<p class="form-subtitle">Pessoa {{ userTypeText }}</p>
 			<div class="form-container">
 				<AppInput
 					v-model="modelValue.name"

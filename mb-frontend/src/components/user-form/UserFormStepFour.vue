@@ -1,7 +1,7 @@
 <template>
 	<div class="form-step-wrapper">
 		<div>
-			<h2>Revise suas informações</h2>
+			<p class="form-subtitle">Revise suas informações</p>
 			<div class="form-container">
 				<AppInput v-model="modelValue.email" label="Endereço de email" disabled />
 				<AppInput v-model="modelValue.name" label="Nome" disabled />

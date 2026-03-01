@@ -9,8 +9,8 @@
 </template>
 
 <script setup>
-	import AppFooter from './components/layout/AppFooter.vue'
-	import AppHeader from './components/layout/AppHeader.vue'
+	import AppFooter from '~/layout/AppFooter.vue'
+	import AppHeader from '~/layout/AppHeader.vue'
 	import UserForm from './pages/UserForm.vue'
 </script>
 

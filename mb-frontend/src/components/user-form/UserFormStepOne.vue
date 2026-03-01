@@ -1,11 +1,12 @@
 <template>
 	<div class="form-step-wrapper">
 		<div>
-			<h2>Seja bem-vindo(a)</h2>
+			<p class="form-subtitle">Seja bem-vindo(a)</p>
 			<div class="form-container">
 				<AppInput
 					v-model="modelValue.email"
 					label="Endereço de email"
+					type="email"
 					:errorMessage="emailErrorMessage"
 					@blur="touched = true"
 				/>

@@ -30,8 +30,8 @@
 
 <script setup>
 	import { computed, ref } from 'vue'
-	import EyeOpen from '../Icon/EyeOpen.vue'
-	import EyeClose from '../Icon/EyeClose.vue'
+	import EyeOpen from '~/icons/EyeOpen.vue'
+	import EyeClose from '~/icons/EyeClose.vue'
 
 	const modelValue = defineModel({
 		type: String,

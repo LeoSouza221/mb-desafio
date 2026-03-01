@@ -4,7 +4,7 @@
 
 <script setup>
 	import { computed } from 'vue'
-	import AppInput from './AppInput.vue'
+	import AppInput from '~/inputs/AppInput.vue'
 
 	const modelValue = defineModel({
 		type: String,

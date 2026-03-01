@@ -18,8 +18,8 @@
 
 <script setup>
 	import { computed } from 'vue'
-	import Github from '../Icon/Github.vue'
-	import Linkedin from '../Icon/Linkedin.vue'
+	import Github from '~/icons/Github.vue'
+	import Linkedin from '~/icons/Linkedin.vue'
 
 	const year = computed(() => new Date().getFullYear())
 </script>
