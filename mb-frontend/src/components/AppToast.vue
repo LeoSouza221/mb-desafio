@@ -23,21 +23,17 @@
 		position: fixed;
 		bottom: 50px;
 		right: 20px;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
 		z-index: 9999;
 	}
 
 	.toast {
-		padding: 12px 16px;
-		border-radius: 8px;
+		padding: var(--spacing-3) var(--spacing-4);
+		border-radius: var(--radius);
 		min-width: 250px;
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		place-items: center;
 		font-weight: 500;
-		animation: slideIn 0.25s ease;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 	}
 
 	.toast--success {
