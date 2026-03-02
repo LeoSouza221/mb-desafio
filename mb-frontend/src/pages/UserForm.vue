@@ -81,7 +81,11 @@
 			resetUserData()
 			updateCurrentStep(1)
 		} else {
-			errorToast('Ocorreu um erro ao criar o usuário. Tente novamente.')
+			const responseError = JSON.parse(error.value.message)
+			const errorMessage = responseError?.message || 'Ocorreu um erro ao criar o usuário.'
+			const missingFields = responseError?.missingFields?.join(', ') || ''
+
+			errorToast(`${errorMessage}: ${missingFields}`)
 		}
 	}
 

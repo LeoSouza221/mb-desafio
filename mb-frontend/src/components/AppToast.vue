@@ -14,8 +14,6 @@
 	import AppTransition from '~/AppTransition.vue'
 
 	const { toasts, removeToast } = useToast()
-
-	console.log('Toasts:', toasts)
 </script>
 
 <style scoped>
