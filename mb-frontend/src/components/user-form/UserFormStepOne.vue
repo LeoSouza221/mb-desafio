@@ -25,17 +25,25 @@
 						name="userDocument"
 					/>
 				</fieldset>
+
+				<AppInput
+					v-model="allowError"
+					label="Permitir continuar mesmo com email inválido"
+					type="checkbox"
+				/>
 			</div>
 		</div>
-		<UserFormButtonActions :currentStep="1" :disabled="emailHasError" />
+		<UserFormButtonActions :currentStep="1" :disabled="emailHasError && !allowError" />
 	</div>
 </template>
 
 <script setup>
+	import { useFieldValidator } from '../../composables/useFieldValidator'
+	import { ref } from 'vue'
 	import AppInput from '../inputs/AppInput.vue'
 	import AppInputRadio from '../inputs/AppInputRadio.vue'
-	import { useFieldValidator } from '../../composables/useFieldValidator'
 	import UserFormButtonActions from './UserFormButtonActions.vue'
+	import App from '@/App.vue'
 
 	const modelValue = defineModel({
 		type: Object,
@@ -49,6 +57,8 @@
 		})
 	})
 
+	const allowError = ref(false)
+
 	const {
 		touched,
 		errorMessage: emailErrorMessage,
@@ -61,9 +71,6 @@
 
 <style scoped>
 	.sr-only {
-		position: absolute;
-		width: 1px;
-		height: 1px;
 		padding: 0;
 		margin: -1px;
 		overflow: hidden;

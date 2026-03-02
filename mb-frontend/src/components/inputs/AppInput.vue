@@ -39,7 +39,7 @@
 	import EyeClose from '~/icons/EyeClose.vue'
 
 	const modelValue = defineModel({
-		type: String,
+		type: [String, Boolean],
 		default: ''
 	})
 
@@ -105,10 +105,22 @@
 		width: 100%;
 	}
 
+	.input-wrapper:has(input[type='checkbox']) {
+		display: flex;
+		flex-direction: row-reverse;
+		gap: var(--spacing-2);
+		justify-content: flex-end;
+	}
+
 	.input-container {
 		position: relative;
 		border: 2px solid var(--text-color);
 		border-radius: var(--radius);
+	}
+
+	.input-container:has(input[type='checkbox']) {
+		border-radius: 0;
+		border: none;
 	}
 
 	.input-container:has(input:disabled) {
