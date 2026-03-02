@@ -1,0 +1,10 @@
+{
+  "name": "mb-project",
+  "private": true,
+  "scripts": {
+    "setup": "npm install --prefix mb-frontend && npm install --prefix mb-backend",
+    "build": "npm run build --prefix mb-frontend",
+    "start": "node mb-backend/server.js",
+    "dev": "npm run setup && npm run build && npm run start"
+  }
+}
