@@ -1,45 +1,29 @@
-import express from 'express'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import app from './app.js'
 
-const app = express()
+// const app = express()
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+// const __filename = fileURLToPath(import.meta.url)
+// const __dirname = path.dirname(__filename)
 
-// Permite ler JSON
-app.use(express.json())
-// app.use(
-//   cors({
-//     origin: 'http://localhost:5173',
-//     credentials: true,
-//   }),
-// )
+// app.use(express.json())
 
-// 🔥 1️⃣ Servir arquivos estáticos do Vue buildado
-app.use(express.static(path.resolve(__dirname, '../mb-frontend/dist')))
+// // Servir arquivos estáticos do Vue buildado
+// app.use(express.static(path.resolve(__dirname, '../mb-frontend/dist')))
 
-app.use((req, res, next) => {
-  console.log('Backend recebeu:', req.method, req.url)
-  next()
-})
+// app.use((req, res, next) => {
+//   next()
+// })
 
-// 🔥 2️⃣ GET /registration
-app.get('/registration', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../mb-frontend/dist/index.html'))
-})
+// app.get('/registration', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../mb-frontend/dist/index.html'))
+// })
 
-// 🔥 3️⃣ POST /api/registration
-app.post('/api/registration', (req, res) => {
-  console.log('BODY:', req.body)
-
-  const { name, email } = req.body || {}
-
-  res.json({
-    success: true,
-    message: 'User registered successfully',
-  })
-})
+// app.post('/api/registration', validateRequiredFields, (req, res) => {
+//   res.status(201).json({
+//     success: true,
+//     message: 'Todos os campos foram preenchidos',
+//   })
+// })
 
 function startServer(port) {
   const server = app.listen(port, () => {
