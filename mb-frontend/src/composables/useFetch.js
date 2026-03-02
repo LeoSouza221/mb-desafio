@@ -1,22 +1,28 @@
 import { ref, watchEffect, toValue } from 'vue'
 
-export function useFetch(url) {
+export function useFetch() {
 	const data = ref(null)
 	const error = ref(null)
+	const loading = ref(false)
 
-	const fetchData = () => {
+	async function fetchData(url, options = {}) {
 		data.value = null
 		error.value = null
+		loading.value = true
 
-		fetch(toValue(url))
-			.then((res) => res.json())
-			.then((json) => (data.value = json))
-			.catch((err) => (error.value = err))
+		try {
+			const res = await fetch('/api' + url, options)
+			if (!res.ok) {
+				throw new Error(await res.text())
+			}
+			const json = await res.json()
+			data.value = json
+		} catch (err) {
+			error.value = err
+		} finally {
+			loading.value = false
+		}
 	}
 
-	watchEffect(() => {
-		fetchData()
-	})
-
-	return { data, error }
+	return { data, error, loading, fetchData }
 }

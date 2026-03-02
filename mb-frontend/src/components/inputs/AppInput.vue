@@ -1,13 +1,16 @@
 <template>
 	<div>
 		<div class="input-wrapper">
-			<label>{{ label }}</label>
+			<label :for="resolvedInputId">{{ label }}</label>
 			<div class="input-container">
 				<input
 					v-model="modelValue"
 					class="input"
 					:type="inputType"
 					v-bind="$attrs"
+					:id="resolvedInputId"
+					:aria-invalid="errorMessage ? 'true' : 'false'"
+					:aria-describedby="errorMessage ? errorId : undefined"
 					@blur="emit('blur', $event)"
 					@focus="emit('focus', $event)"
 				/>
@@ -15,6 +18,8 @@
 					v-if="type === 'password'"
 					type="button"
 					class="button-password"
+					:aria-label="isVisible ? 'Ocultar senha' : 'Mostrar senha'"
+					:aria-pressed="isVisible"
 					@click="toggleVisibility"
 				>
 					<EyeClose v-if="isVisible" width="24" height="24" />
@@ -23,13 +28,13 @@
 			</div>
 		</div>
 		<div class="input-error">
-			<span v-if="errorMessage">{{ errorMessage }}</span>
+			<span v-if="errorMessage" :id="errorId" role="alert">{{ errorMessage }}</span>
 		</div>
 	</div>
 </template>
 
 <script setup>
-	import { computed, ref } from 'vue'
+	import { computed, ref, useAttrs } from 'vue'
 	import EyeOpen from '~/icons/EyeOpen.vue'
 	import EyeClose from '~/icons/EyeClose.vue'
 
@@ -39,6 +44,7 @@
 	})
 
 	const emit = defineEmits(['blur', 'focus'])
+	const attrs = useAttrs()
 	const props = defineProps({
 		label: {
 			type: String,
@@ -55,6 +61,15 @@
 	})
 
 	const isVisible = ref(false)
+	const inputId = `app-input-${Math.random().toString(36).slice(2, 10)}`
+
+	const resolvedInputId = computed(() => {
+		return attrs.id || inputId
+	})
+
+	const errorId = computed(() => {
+		return `${resolvedInputId.value}-error`
+	})
 
 	const inputType = computed(() => {
 		if (props.type === 'password') {
@@ -94,7 +109,6 @@
 		position: relative;
 		border: 2px solid var(--text-color);
 		border-radius: var(--radius);
-		background: white;
 	}
 
 	.input-container:has(input:disabled) {
