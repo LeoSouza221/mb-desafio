@@ -100,7 +100,8 @@
 		hasError: phoneNumberHasError
 	} = useFieldValidator(modelValue, 'phoneNumber', [
 		(v) => !v && 'Telefone obrigatório',
-		(v) => v && v.length < 10 && 'Telefone deve conter pelo menos 10 caracteres'
+		(v) => v && v.length < 10 && 'Telefone deve conter pelo menos 10 caracteres',
+		(v) => v && v.length > 11 && 'Telefone deve conter no máximo 11 caracteres'
 	])
 
 	const documentLengthValidation = computed(() => {
