@@ -1,6 +1,11 @@
 <template>
-	<button :class="['btn', variant, { outline }]" :disabled="disabled || loading">
-		<Loading v-if="loading" class="spinner" />
+	<button
+		:class="['btn', variant, { outline }]"
+		:type="type"
+		:disabled="disabled || loading"
+		:aria-busy="loading"
+	>
+		<Loading v-if="loading" class="spinner" aria-hidden="true" />
 		<span><slot /></span>
 	</button>
 </template>
@@ -24,6 +29,10 @@
 		outline: {
 			type: Boolean,
 			default: false
+		},
+		type: {
+			type: String,
+			default: 'button'
 		}
 	})
 </script>

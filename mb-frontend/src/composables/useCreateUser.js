@@ -1,9 +1,11 @@
 import { useFetch } from './useFetch'
 
 export function useCreateUser() {
-	function createUser(userData) {
-		console.log('Creating user with data:', userData)
-		const { data, error } = useFetch('/api/registration', {
+	const { fetchData, data, error, loading } = useFetch()
+
+	async function createUser(userData) {
+		await fetchData('/registration', {
+			credentials: 'include',
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -15,6 +17,7 @@ export function useCreateUser() {
 	}
 
 	return {
-		createUser
+		createUser,
+		loading
 	}
 }

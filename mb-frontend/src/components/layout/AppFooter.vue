@@ -2,13 +2,19 @@
 	<footer>
 		<p>© {{ year }} MB Desafio</p>
 		<div class="footer-socials">
-			<a href="https://github.com/LeoSouza221" target="_blank" rel="noopener noreferrer">
+			<a
+				href="https://github.com/LeoSouza221"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="GitHub LeoSouza221 (abre em nova aba)"
+			>
 				<Github width="20" height="20" />
 			</a>
 			<a
 				href="https://www.linkedin.com/in/leonardo-de-souza-a75557156/"
 				target="_blank"
 				rel="noopener noreferrer"
+				aria-label="LinkedIn Leonardo de Souza (abre em nova aba)"
 			>
 				<Linkedin width="20" height="20" />
 			</a>

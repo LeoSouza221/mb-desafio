@@ -10,7 +10,8 @@
 					:errorMessage="emailErrorMessage"
 					@blur="touched = true"
 				/>
-				<div class="form-radio-group" role="user-document">
+				<fieldset class="form-radio-group">
+					<legend class="sr-only">Tipo de pessoa</legend>
 					<AppInputRadio
 						v-model="modelValue.type"
 						label="Pessoa física"
@@ -23,7 +24,7 @@
 						value="pj"
 						name="userDocument"
 					/>
-				</div>
+				</fieldset>
 			</div>
 		</div>
 		<UserFormButtonActions :currentStep="1" :disabled="emailHasError" />
@@ -57,3 +58,23 @@
 		(v) => !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) && 'Email inválido'
 	])
 </script>
+
+<style scoped>
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	.form-radio-group {
+		border: 0;
+		margin: 0;
+		padding: 0;
+	}
+</style>

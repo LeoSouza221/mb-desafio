@@ -23,7 +23,7 @@
 
 	.slide-enter-from {
 		opacity: 0;
-		transform: translateX(-50%);
+		transform: translateX(50%);
 	}
 
 	.slide-enter-to {
@@ -38,6 +38,6 @@
 
 	.slide-leave-to {
 		opacity: 0;
-		transform: translateX(50%);
+		transform: translateX(-50%);
 	}
 </style>

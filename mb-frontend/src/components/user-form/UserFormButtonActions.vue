@@ -2,23 +2,32 @@
 	<div class="form-action-buttons">
 		<AppButton
 			v-if="currentStep !== 1"
+			type="button"
 			variant="primary"
 			outline
-			:loading="false"
+			:loading="loading"
+			:disabled="loading"
 			@click.prevent="onStepBack()"
 		>
 			Voltar
 		</AppButton>
 		<AppButton
 			v-if="currentStep !== 4"
+			type="button"
 			variant="primary"
-			:loading="false"
-			:disabled="props.disabled"
+			:loading="loading"
+			:disabled="props.disabled || loading"
 			@click.prevent="onStepForward()"
 		>
 			Continuar
 		</AppButton>
-		<AppButton v-if="currentStep === 4" variant="primary" :loading="false" type="submit">
+		<AppButton
+			v-if="currentStep === 4"
+			variant="primary"
+			:loading="loading"
+			:disabled="loading"
+			type="submit"
+		>
 			Cadastrar
 		</AppButton>
 	</div>
@@ -37,7 +46,7 @@
 
 	const emit = defineEmits(['stepBack', 'stepForward'])
 
-	const { currentStep, updateCurrentStep } = inject('step')
+	const { currentStep, updateCurrentStep, loading } = inject('step')
 
 	const onStepBack = () => {
 		if (currentStep.value > 1) {

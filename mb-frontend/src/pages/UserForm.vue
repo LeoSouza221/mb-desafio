@@ -1,9 +1,14 @@
 <template>
-	<form @submit.prevent="onHandleSubmit">
-		<section class="form-section">
+	<section class="form-section">
+		<form
+			@submit.prevent="onHandleSubmit"
+			class="form-wrapper"
+			aria-labelledby="user-form-title"
+			aria-describedby="user-form-step"
+		>
 			<div class="form-subtitle-wrapper">
-				<h2>Cadastro de Usuário</h2>
-				<p aria-live="polite" class="form-subtitle-step">
+				<h2 id="user-form-title">Cadastro de Usuário</h2>
+				<p id="user-form-step" aria-live="polite" class="form-subtitle-step">
 					Etapa <span class="form-subtitle-text-step">{{ currentStep }}</span> de
 					<span class="form-subtitle-text-step">4</span>
 				</p>
@@ -14,8 +19,8 @@
 				<UserFormStepThree v-else-if="currentStep === 3" key="stepThree" v-model="user" />
 				<UserFormStepFour v-else-if="currentStep === 4" key="stepFour" v-model="user" />
 			</AppTransition>
-		</section>
-	</form>
+		</form>
+	</section>
 </template>
 
 <script setup>
@@ -38,7 +43,7 @@
 		password: ''
 	})
 
-	const { createUser } = useCreateUser()
+	const { createUser, loading } = useCreateUser()
 
 	function updateCurrentStep(step) {
 		currentStep.value = step
@@ -46,10 +51,11 @@
 
 	provide('step', {
 		currentStep,
-		updateCurrentStep
+		updateCurrentStep,
+		loading
 	})
 
-	function onHandleSubmit() {
+	async function onHandleSubmit() {
 		const userData = {
 			email: user.value.email,
 			type: user.value.type,
@@ -59,15 +65,14 @@
 			phoneNumber: user.value.phoneNumber,
 			password: user.value.password
 		}
-		console.log('Dados do usuário:', userData)
 
-		const teste = createUser(userData)
+		const teste = await createUser(userData)
 		console.log('Resposta da API:', teste)
 	}
 </script>
 
 <style scoped>
-	form {
+	.form-section {
 		min-height: 100%;
 		padding: var(--spacing-4);
 		display: flex;
@@ -75,7 +80,16 @@
 		gap: var(--spacing-4);
 	}
 
-	section {
+	h2 {
+		font-size: var(--spacing-6);
+	}
+
+	.form-wrapper {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-4);
+		overflow: hidden;
 		margin: 0 auto;
 		padding: var(--spacing-4);
 		background: white;
@@ -84,18 +98,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		max-width: 600px;
-	}
-
-	h2 {
-		font-size: var(--spacing-6);
-	}
-
-	.form-section {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing-4);
-		overflow: hidden;
 	}
 
 	.form-subtitle-wrapper {
