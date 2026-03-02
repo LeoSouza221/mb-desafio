@@ -2,6 +2,7 @@
 	<AppHeader />
 
 	<main>
+		<AppToast />
 		<UserForm />
 	</main>
 
@@ -12,6 +13,7 @@
 	import AppFooter from '~/layout/AppFooter.vue'
 	import AppHeader from '~/layout/AppHeader.vue'
 	import UserForm from './pages/UserForm.vue'
+	import AppToast from '~/AppToast.vue'
 </script>
 
 <style scoped>

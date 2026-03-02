@@ -26,6 +26,7 @@
 <script setup>
 	import { ref, provide } from 'vue'
 	import { useCreateUser } from '@/composables/useCreateUser'
+	import { useToast } from '@/composables/useToast'
 	import UserFormStepOne from '~/user-form/UserFormStepOne.vue'
 	import UserFormStepTwo from '~/user-form/UserFormStepTwo.vue'
 	import UserFormStepThree from '~/user-form/UserFormStepThree.vue'
@@ -44,16 +45,23 @@
 	})
 
 	const { createUser, loading } = useCreateUser()
+	const { success, error: errorToast } = useToast()
 
 	function updateCurrentStep(step) {
 		currentStep.value = step
 	}
 
-	provide('step', {
-		currentStep,
-		updateCurrentStep,
-		loading
-	})
+	function resetUserData() {
+		user.value = {
+			email: '',
+			type: 'pf',
+			name: '',
+			document: '',
+			birthday: '',
+			phoneNumber: '',
+			password: ''
+		}
+	}
 
 	async function onHandleSubmit() {
 		const userData = {
@@ -66,14 +74,27 @@
 			password: user.value.password
 		}
 
-		const teste = await createUser(userData)
-		console.log('Resposta da API:', teste)
+		const { error } = await createUser(userData)
+		if (!error.value) {
+			success('Usuário criado com sucesso!')
+
+			resetUserData()
+			updateCurrentStep(1)
+		} else {
+			errorToast('Ocorreu um erro ao criar o usuário. Tente novamente.')
+		}
 	}
+
+	provide('step', {
+		currentStep,
+		updateCurrentStep,
+		loading
+	})
 </script>
 
 <style scoped>
 	.form-section {
-		min-height: 100%;
+		flex: 1;
 		padding: var(--spacing-4);
 		display: flex;
 		place-items: center;
@@ -86,7 +107,6 @@
 
 	.form-wrapper {
 		width: 100%;
-		display: flex;
 		flex-direction: column;
 		gap: var(--spacing-4);
 		overflow: hidden;
