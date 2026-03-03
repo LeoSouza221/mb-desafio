@@ -28,7 +28,7 @@
 
 				<AppInput
 					v-model="allowError"
-					label="Permitir continuar mesmo com email inválido"
+					label="Permitir continuar mesmo com email inválido (apenas para testes)"
 					type="checkbox"
 				/>
 			</div>
